@@ -10,7 +10,12 @@ pipeline {
          pollSCM('* * * * *')
      }
 
-stages{
+    tools {
+        maven 'localMaven'
+        jdk 'localJDK'
+    }
+    
+    stages{
         stage('Build'){
             steps {
                 sh 'mvn clean package'
